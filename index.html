@@ -1,17 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-    <link rel="stylesheet" href="stylesheet.css">
-    <Script src="script.js"></Script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script src="script.js"></script>
+  </head>
+
+  <body>
     <div class="container">
+      <div id="title">
         <h1>Position Size Calculator</h1>
-        <div class="form">
+      </div>
+      <div class="form">
+        <!-- Popular pairs -->
+        <div>
+          <label for="pairs">Popular Pairs:</label>
+          <button onclick="pairSelect()">EURUSD</button>
+          <button onclick="pairSelect()">GBPUSD</button>
+          <button onclick="pairSelect()">USDJPY</button>
+          <button onclick="pairSelect()">USDCHF</button>
         </div>
+        <!-- Currency pair -->
+        <div>
+          <label for="currency">Currency Pair:</label>
+          <select name="currency" id="currency">
+            <option value="EURUSD">EURUSD</option>
+            <option value="GBPUSD">GBPUSD</option>
+            <option value="USDJPY">USDJPY</option>
+            <option value="USDCHF">USDCHF</option>
+            <option value="USDCAD">USDCAD</option>
+            <option value="AUDUSD">AUDUSD</option>
+            <option value="NZDUSD">NZDUSD</option>
+            <option value="EURGBP">EURGBP</option>
+            <option value="EURJPY">EURJPY</option>
+            <option value="GBPJPY">GBPJPY</option>
+            <option value="AUDJPY">AUDJPY</option>
+            <option value="NZDJPY">NZDJPY</option>
+            <option value="GBPAUD">GBPAUD</option>
+            <option value="GBPNZD">GBPNZD</option>
+            <option value="GBPCAD">GBPCAD</option>
+          </select>
+        </div>
+
+        <!-- Account currency -->
+        <div>
+          <label for="accountCurrency">Account Currency:</label>
+          <select name="accountCurrency" id="accountCurrency">
+            <option value="USD">USD</option>
+            <option value="USD">USD</option>
+            <option value="USD">USD</option>
+            <option value="USD">USD</option>
+            <option value="USD">USD</option>
+            <option value="USD">USD</option>
+            <option value="USD">USD</option>
+            <option value="USD">USD</option>
+            <option value="USD">USD</option>
+            <option value="USD">USD</option>
+          </select>
+        </div>
+
+        <!-- Account size -->
+        <div>
+          <label for="account">Account Size:</label>
+          <input type="number" id="account" />
+        </div>
+
+        <!-- Risk -->
+        <div>
+          <label for="risk">Risk:</label>
+          <select name="accountCurrency" id="accountCurrency">
+            <option value="Percentage">%</option>
+            <option value="Dollar">$</option>
+          </select>
+          <input type="number" id="risk" />
+        </div>
+
+        <!-- Stop loss -->
+        <div>
+          <label for="stopLoss">Stop Loss, Pips:</label>
+          <input type="number" id="stopLoss" />
+        </div>
+
+        <!-- Trade size -->
+        <div>
+          <label for="">Trade size (Lots):</label>
+          <input type="number" id="tradeSize" placeholder="1" />
+        </div>
+
+        <!-- Action buttons -->
+        <div>
+          <button onclick="calculate()">Calculate</button>
+          <button onclick="reset()">Reset</button>
+        </div>
+      </div>
+
+      <!-- Result table -->
+      <div class="result_table">
+        <table>
+          <tr>
+            <th>Position Size</th>
+            <th>Position Size (Units)</th>
+            <th>Position Size (Lots)</th>
+          </tr>
+          <tr>
+            <td id="positionSize"></td>
+            <td id="positionSizeUnits"></td>
+            <td id="positionSizeLots"></td>
+          </tr>
+        </table>
+      </div>
     </div>
-</body>
+  </body>
 </html>
