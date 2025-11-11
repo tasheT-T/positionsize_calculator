@@ -1,35 +1,62 @@
-body{
-display: flex;
-justify-content: center;
-font-family: Arial, Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
-#title{
-    background-color: lightblue;
-    text-align: center;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
 }
-.container{
-  background-color: grey;
-    width: 70%;
-    height: 70%;
-    display: flex;
-    flex-direction: column;
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Animation for results */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#results.show {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Favorite star */
+.favorite {
+    color: #f59e0b !important;
+    fill: #f59e0b !important;
+}
+
+/* Favorite pair chip */
+.favorite-chip {
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    display: inline-flex;
     align-items: center;
-    text-align: center;
+    cursor: pointer;
 }
-.form{
-    background-color: violet;
-    width: 70%;
-    height: 70%;
-    margin: 10px;
-    text-align: center;
+
+.favorite-chip:hover {
+    background-color: #fde68a;
 }
-.result_table{
-    background-color: lightgreen;
-    text-align: center;
-    width: 50%;
-    height: 50%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.favorite-chip i {
+    margin-left: 6px;
+    width: 14px;
+    height: 14px;
 }

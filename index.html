@@ -1,116 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link rel="stylesheet" href="stylesheet.css" />
-    <script src="script.js"></script>
-  </head>
-
-  <body>
-    <div class="container">
-      <div id="title">
-        <h1>Position Size Calculator</h1>
-      </div>
-      <div class="form">
-        <!-- Popular pairs -->
-        <div>
-          <label for="pairs">Popular Pairs:</label>
-          <button onclick="pairSelect()">EURUSD</button>
-          <button onclick="pairSelect()">GBPUSD</button>
-          <button onclick="pairSelect()">USDJPY</button>
-          <button onclick="pairSelect()">USDCHF</button>
-        </div>
-        <!-- Currency pair -->
-        <div>
-          <label for="currency">Currency Pair:</label>
-          <select name="currency" id="currency">
-            <option value="EURUSD">EURUSD</option>
-            <option value="GBPUSD">GBPUSD</option>
-            <option value="USDJPY">USDJPY</option>
-            <option value="USDCHF">USDCHF</option>
-            <option value="USDCAD">USDCAD</option>
-            <option value="AUDUSD">AUDUSD</option>
-            <option value="NZDUSD">NZDUSD</option>
-            <option value="EURGBP">EURGBP</option>
-            <option value="EURJPY">EURJPY</option>
-            <option value="GBPJPY">GBPJPY</option>
-            <option value="AUDJPY">AUDJPY</option>
-            <option value="NZDJPY">NZDJPY</option>
-            <option value="GBPAUD">GBPAUD</option>
-            <option value="GBPNZD">GBPNZD</option>
-            <option value="GBPCAD">GBPCAD</option>
-          </select>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lot Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-50 min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-2xl bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- Header -->
+        <div class="bg-gray-100 px-6 py-4 border-b border-gray-200">
+            <h1 class="text-2xl font-semibold text-gray-800">Lot Size Calculator</h1>
+            <p class="text-gray-600 mt-1">Calculate the lot size for your trades</p>
         </div>
 
-        <!-- Account currency -->
-        <div>
-          <label for="accountCurrency">Account Currency:</label>
-          <select name="accountCurrency" id="accountCurrency">
-            <option value="USD">USD</option>
-            <option value="USD">USD</option>
-            <option value="USD">USD</option>
-            <option value="USD">USD</option>
-            <option value="USD">USD</option>
-            <option value="USD">USD</option>
-            <option value="USD">USD</option>
-            <option value="USD">USD</option>
-            <option value="USD">USD</option>
-            <option value="USD">USD</option>
-          </select>
+        <!-- Main Content -->
+        <div class="p-6">
+            <!-- Calculator Form -->
+            <form id="calculatorForm" class="space-y-4">
+                <!-- Pair Selection -->
+                <div>
+                    <label for="pair" class="block text-sm font-medium text-gray-700 mb-1">Trading Pair</label>
+                    <div class="flex space-x-2">
+                        <select id="pair" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <option value="EURUSD">EUR/USD</option>
+                            <option value="GBPUSD">GBP/USD</option>
+                            <option value="USDJPY">USD/JPY</option>
+                            <option value="AUDUSD">AUD/USD</option>
+                            <option value="USDCAD">USD/CAD</option>
+                            <option value="XAUUSD">Gold (XAU/USD)</option>
+                            <option value="XAGUSD">Silver (XAG/USD)</option>
+                            <option value="USOIL">Crude Oil (USOIL)</option>
+                        </select>
+                        <button type="button" id="favoriteBtn" class="p-2 bg-gray-100 rounded-md hover:bg-gray-200">
+                            <i data-feather="star" class="text-gray-500"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Account Balance -->
+                <div>
+                    <label for="balance" class="block text-sm font-medium text-gray-700 mb-1">Account Balance ($)</label>
+                    <input type="number" id="balance" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="1000" required>
+                </div>
+
+                <!-- Risk Percentage -->
+                <div>
+                    <label for="risk" class="block text-sm font-medium text-gray-700 mb-1">Risk Percentage (%)</label>
+                    <input type="number" id="risk" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="1" step="0.1" required>
+                </div>
+
+                <!-- Stop Loss (Pips) -->
+                <div>
+                    <label for="stopLoss" class="block text-sm font-medium text-gray-700 mb-1">Stop Loss (Pips)</label>
+                    <input type="number" id="stopLoss" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="20" required>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex space-x-3 pt-2">
+                    <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-150 ease-in-out">
+                        Calculate
+                    </button>
+                    <button type="reset" id="cancelBtn" class="flex-1 bg-gray-200 hover:bg-red-500 hover:text-white text-gray-700 py-2 px-4 rounded-md transition duration-150 ease-in-out">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+
+            <!-- Results Table -->
+            <div id="results" class="mt-6 hidden">
+                <h2 class="text-lg font-medium text-gray-800 mb-3">Recommended Lot Size</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pair</th>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Lot Size</th>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsBody" class="bg-white divide-y divide-gray-200">
+                            <!-- Results will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
-        <!-- Account size -->
-        <div>
-          <label for="account">Account Size:</label>
-          <input type="number" id="account" />
+        <!-- Favorites Section -->
+        <div id="favoritesSection" class="hidden px-6 py-4 border-t border-gray-200">
+            <h2 class="text-lg font-medium text-gray-800 mb-2">Favorite Pairs</h2>
+            <div id="favoritesList" class="flex flex-wrap gap-2">
+                <!-- Favorites will be inserted here -->
+            </div>
         </div>
-
-        <!-- Risk -->
-        <div>
-          <label for="risk">Risk:</label>
-          <select name="accountCurrency" id="accountCurrency">
-            <option value="Percentage">%</option>
-            <option value="Dollar">$</option>
-          </select>
-          <input type="number" id="risk" />
-        </div>
-
-        <!-- Stop loss -->
-        <div>
-          <label for="stopLoss">Stop Loss, Pips:</label>
-          <input type="number" id="stopLoss" />
-        </div>
-
-        <!-- Trade size -->
-        <div>
-          <label for="">Trade size (Lots):</label>
-          <input type="number" id="tradeSize" placeholder="1" />
-        </div>
-
-        <!-- Action buttons -->
-        <div>
-          <button onclick="calculate()">Calculate</button>
-          <button onclick="reset()">Reset</button>
-        </div>
-      </div>
-
-      <!-- Result table -->
-      <div class="result_table">
-        <table>
-          <tr>
-            <th>Position Size</th>
-            <th>Position Size (Units)</th>
-            <th>Position Size (Lots)</th>
-          </tr>
-          <tr>
-            <td id="positionSize"></td>
-            <td id="positionSizeUnits"></td>
-            <td id="positionSizeLots"></td>
-          </tr>
-        </table>
-      </div>
     </div>
-  </body>
+
+        <!-- How to Use Section 
+        <div class="bg-white rounded-xl shadow-sm p-6 mt-8">
+                <h2 class="text-xl font-semibold mb-4">How to Use</h2>
+                <ol class="list-decimal pl-5 space-y-2 text-gray-700">
+                    <li>Select the asset type (Forex or Commodity)</li>
+                    <li>Choose your trading pair from the dropdown</li>
+                    <li>Enter your account balance in USD</li>
+                    <li>Set your risk percentage (typically 1-2%)</li>
+                    <li>Enter your stop loss in pips</li>
+                    <li>Click "Calculate" to see the recommended lot size</li>
+                    <li>Use the star button to favorite pairs for quick access</li>
+                </ol>
+            </div>   -->
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
 </html>
