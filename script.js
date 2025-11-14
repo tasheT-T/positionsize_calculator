@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 favoriteChip.className = 'favorite-chip';
                 favoriteChip.innerHTML = `
                     ${pairName}
-                    <i data-feather="x" class="remove-favorite"></i>
+                    <i data-feather="" class="remove-favorite"></i>
                 `;
                 
                 favoriteChip.addEventListener('click', function() {
